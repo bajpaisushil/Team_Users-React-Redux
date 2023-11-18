@@ -1,6 +1,6 @@
 import UsersList from "./components/UsersList";
 import { useDispatch, useSelector } from "react-redux";
-import { clearTeam, setTeam } from "./redux/slices/teamSlice";
+import { setTeam } from "./redux/slices/teamSlice";
 import {useNavigate} from 'react-router-dom';
 
 const mockUsers = [
