@@ -12283,33 +12283,6 @@ function App() {
   const users = useSelector((state: any) => state.user.users);
   const team = useSelector((state: any) => state.team.team);
 
-  // const handleCreateTeam = () => {
-  //   // Filter logic to create a team with unique domains and availability
-  //   const uniqueDomainsAndAvailabilityUsers = users
-  //     .filter((user: any) =>
-  //       team.every(
-  //         (teamMember: any) =>
-  //           user.id !== teamMember.id &&
-  //           user.domain === teamMember.domain &&
-  //           user.available === teamMember.available
-  //       )
-  //     )
-  //     .filter((user: any) => user.selected) // Only include selected users
-  //     .filter((user: any, index: number, self: any[]) => {
-  //       // Ensure uniqueness based on domain and availability
-  //       return (
-  //         self.findIndex(
-  //           (otherUser: any) =>
-  //             otherUser.domain === user.domain &&
-  //             otherUser.available === user.available
-  //         ) === index
-  //       );
-  //     });
-
-  //   // Dispatch action to set the team in the Redux store
-  //   dispatch(setTeam(uniqueDomainsAndAvailabilityUsers));
-  //   console.log('users', users);
-  // };
 
   const handleCreateTeam = () => {
     // Filter logic to create a team with unique domains and availability
@@ -12341,8 +12314,8 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <h1 className="text-2xl text-center font-bold mb-4 text-blue-600">
+    <div className="flex flex-col justify-center items-center ">
+      <h1 className="text-2xl text-center underline font-bold mb-4 text-blue-600">
         Play with Teams
       </h1>
 

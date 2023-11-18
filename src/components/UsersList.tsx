@@ -97,7 +97,7 @@ const UsersList: React.FC<UsersListProps> = ({ users, usersPerPage }) => {
         onChange={handleSearch}
         className="mb-4 p-2 border border-gray-300 rounded m-auto"
       />
-      <div className="flex flex-row gap-[1rem]">
+      <div className="flex flex-col lg:flex-row gap-[1rem]">
         {/* Domain filter */}
         <select
           value={selectedFilters.domain}
