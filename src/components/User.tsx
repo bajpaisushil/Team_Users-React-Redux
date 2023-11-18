@@ -1,5 +1,3 @@
-import React from "react";
-
 interface UserProps {
   avatar: string;
   first_name: string;

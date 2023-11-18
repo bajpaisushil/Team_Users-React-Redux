@@ -1,5 +1,3 @@
-import { useState } from "react";
-import User from "./components/User";
 import UsersList from "./components/UsersList";
 import { useDispatch, useSelector } from "react-redux";
 import { clearTeam, setTeam } from "./redux/slices/teamSlice";
