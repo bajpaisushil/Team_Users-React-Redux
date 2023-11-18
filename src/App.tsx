@@ -1,7 +1,7 @@
 import UsersList from "./components/UsersList";
 import { useDispatch, useSelector } from "react-redux";
 import { clearTeam, setTeam } from "./redux/slices/teamSlice";
-import Team from "./components/Team";
+import {useNavigate} from 'react-router-dom';
 
 const mockUsers = [
   {
@@ -12279,21 +12279,36 @@ const mockUsers = [
 function App() {
   const usersPerPage = 20; // Choose the number of items per pag
   const dispatch = useDispatch();
+  const nav=useNavigate();
   const users = useSelector((state: any) => state.user.users);
   const team = useSelector((state: any) => state.team.team);
+
   // const handleCreateTeam = () => {
   //   // Filter logic to create a team with unique domains and availability
-  //   const uniqueDomainsAndAvailabilityUsers = users.filter((user: any) =>
-  //     team.every(
-  //       (teamMember: any) =>
-  //         user.id !== teamMember.id &&
-  //         user.domain === teamMember.domain &&
-  //         user.available === teamMember.available
+  //   const uniqueDomainsAndAvailabilityUsers = users
+  //     .filter((user: any) =>
+  //       team.every(
+  //         (teamMember: any) =>
+  //           user.id !== teamMember.id &&
+  //           user.domain === teamMember.domain &&
+  //           user.available === teamMember.available
+  //       )
   //     )
-  //   );
-  
+  //     .filter((user: any) => user.selected) // Only include selected users
+  //     .filter((user: any, index: number, self: any[]) => {
+  //       // Ensure uniqueness based on domain and availability
+  //       return (
+  //         self.findIndex(
+  //           (otherUser: any) =>
+  //             otherUser.domain === user.domain &&
+  //             otherUser.available === user.available
+  //         ) === index
+  //       );
+  //     });
+
   //   // Dispatch action to set the team in the Redux store
-  //   dispatch(setTeam(uniqueDomainsAndAvailabilityUsers));    
+  //   dispatch(setTeam(uniqueDomainsAndAvailabilityUsers));
+  //   console.log('users', users);
   // };
 
   const handleCreateTeam = () => {
@@ -12308,7 +12323,7 @@ function App() {
         )
       )
       .filter((user: any) => user.selected) // Only include selected users
-      .filter((user: any, index: number, self: any[]) => {
+      .filter((user: any, index: number, self: any) => {
         // Ensure uniqueness based on domain and availability
         return (
           self.findIndex(
@@ -12321,13 +12336,8 @@ function App() {
 
     // Dispatch action to set the team in the Redux store
     dispatch(setTeam(uniqueDomainsAndAvailabilityUsers));
-    console.log('users', users);
-  };
-
-  // Function to clear the team
-  const handleClearTeam = () => {
-    // Dispatch action to clear the team in the Redux store
-    dispatch(clearTeam());
+    nav("/team");
+    console.log('team', uniqueDomainsAndAvailabilityUsers);
   };
 
   return (
@@ -12344,16 +12354,10 @@ function App() {
         >
           Create Team
         </button>
-        <button
-          onClick={handleClearTeam}
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Clear Team
-        </button>
       </div>
 
       {/* Display team details using the Team component */}
-      {team.length > 0 && <Team />}
+      {/* {team.length > 0 && <Team />} */}
 
       <UsersList users={mockUsers} usersPerPage={usersPerPage} />
       </div>

@@ -4,6 +4,7 @@ import { setUsers, toggleSelect } from "../redux/slices/userSlice";
 import { useDispatch } from "react-redux";
 
 interface UserProps {
+  id: any;
     avatar: string;
     first_name: string;
     last_name: string;
@@ -107,6 +108,10 @@ const UsersList: React.FC<UsersListProps> = ({ users, usersPerPage }) => {
           <option value="Sales">Sales</option>
           <option value="Finance">Finance</option>
           <option value="Marketing">Marketing</option>
+          <option value="Management">Management</option>
+          <option value="IT">IT</option>
+          <option value="UI Designing">UI Designing</option>
+          <option value="Business Development">Business Development</option>
           {/* Add more options as needed */}
         </select>
 
