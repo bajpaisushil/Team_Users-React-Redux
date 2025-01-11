@@ -174,7 +174,7 @@ const UsersList: React.FC<UsersListProps> = ({ users, usersPerPage }) => {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
           Previous
-        </button>
+        </button> 
         <input
           type="text"
           value={currentPage}
